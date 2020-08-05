@@ -1,4 +1,5 @@
 const inquirer = require('inquirer');
+const cTable = require('console.table');
 
 const promptActions = () => {
   return inquirer.prompt([
@@ -30,6 +31,8 @@ const promptDepartment = () => {
 }
 
 const promptRole = () => {
+  // TODO...populate choices dynamically from db
+  const deptChoices = ['Sales', 'Engineering', 'Finance', 'Legal'];
   return inquirer.prompt([
     {
       type: 'input',
@@ -45,19 +48,15 @@ const promptRole = () => {
       type: 'list',
       name: 'department',
       message: 'Please select the department this role belongs to',
-      // TODO...output choices dynamically, if possible
-      choices: [
-        'Department 1',
-        'Department 2',
-        'Department 3',
-        'Department 4',
-        'Department 5'
-      ]
+      choices: deptChoices
     }
   ])
 }
 
 const promptAddEmp = () => {
+  // TODO...populate choices dynamically from db
+  const roleChoices = ['Sales Lead', 'Salesperson', 'Lead Engineer', 'Software Engineer', 'Accountant', 'Legal Team Lead', 'Lawyer'];
+  const managerChoices = ['John Doe', 'Mike Chan', 'Ashley Rodriguez', 'Kevin Tupik', 'Malia Brown', 'Sarah Lourd', 'Tom Allen'];
   return inquirer.prompt([
     {
       type: 'input',
@@ -73,45 +72,25 @@ const promptAddEmp = () => {
       type: 'list',
       name: 'role',
       message: 'Select the employee\'s role',
-      // TODO...output choices dynamically, if possible
-      choices: [
-        'role 1',
-        'role 2',
-        'role 3',
-        'role 4',
-        'role 5'
-      ]
+      choices: roleChoices
     },
     {
       type: 'list',
       name: 'manager',
       message: 'Select the employee\'s manager',
-      choices: [
-        'Manager 1',
-        'Manager 2',
-        'Manager 3',
-        'Manager 4',
-        'Manager 5'
-      ]
+      choices: managerChoices
     }
   ])
 }
 
 const promptUpdateEmp = () => {
+  const employeeChoices = ['John Doe', 'Mike Chan', 'Ashley Rodriguez', 'Kevin Tupik', 'Malia Brown', 'Sarah Lourd', 'Tom Allen'];
   return inquirer.prompt([
     {
       type: 'list',
       name: 'employee',
       message: 'Please select the employee to update',
-      choices: [
-        'Employee 1',
-        'Employee 2',
-        'Employee 3',
-        'Employee 4',
-        'Employee 5',
-        'Employee 6',
-        'Employee 7'
-      ]
+      choices: employeeChoices
     },
     {
       type: 'input',
@@ -120,3 +99,7 @@ const promptUpdateEmp = () => {
     }
   ])
 }
+
+// promptActions();
+// promptRole();
+promptAddEmp();
