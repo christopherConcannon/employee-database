@@ -1,0 +1,25 @@
+{
+  "name": "employee-database",
+  "version": "1.0.0",
+  "description": "A command-line application to manage a complany's employee database, using Node.js, Inquirer, and MySQL",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christopherConcannon/employee-database.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/christopherConcannon/employee-database/issues"
+  },
+  "homepage": "https://github.com/christopherConcannon/employee-database#readme",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "inquirer": "^7.3.3",
+    "mysql2": "^2.1.0"
+  }
+}
