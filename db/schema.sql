@@ -19,6 +19,7 @@ CREATE TABLE roles (
   salary DECIMAL,
   department_id INT,
   PRIMARY KEY (id),
+  -- TODO...define cascade effects?
   CONSTRAINT fk_department FOREIGN KEY (department_id) REFERENCES departments(id)
 );
 
@@ -27,8 +28,10 @@ CREATE TABLE employees (
   first_name VARCHAR(30),
   last_name VARCHAR(30),
   role_id INT,
+  -- TODO...define cascade effects?
   manager_id INT REFERENCES employees(id),
   PRIMARY KEY (id),
+  -- TODO...define cascade effects?
   CONSTRAINT fk_role FOREIGN KEY (role_id) REFERENCES roles(id)
 );
 

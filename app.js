@@ -1,5 +1,11 @@
 const inquirer = require('inquirer');
 const cTable = require('console.table');
+const Query = require('./lib/Query');
+// require('dotenv').config()
+
+const query = new Query();
+
+
 
 const promptActions = () => {
   return inquirer.prompt([
@@ -36,7 +42,7 @@ const promptRole = () => {
   return inquirer.prompt([
     {
       type: 'input',
-      name: 'role',
+      name: 'title',
       message: 'What is the name of the role you would like to add?'
     },
     {
@@ -102,4 +108,23 @@ const promptUpdateEmp = () => {
 
 // promptActions();
 // promptRole();
-promptAddEmp();
+// promptAddEmp();
+
+query.viewEmployees().then( ([row, field]) => {
+  console.table(row);
+  
+})
+  .catch(console.log)
+  .then( () => query.quit());
+  
+  
+  
+
+  
+  
+  
+  
+  
+  // query.quit();
+
+
