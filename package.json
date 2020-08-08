@@ -4,7 +4,9 @@
   "description": "A command-line application to manage a complany's employee database, using Node.js, Inquirer, and MySQL",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "migrate": "mysql source ./db/schema.sql",
+    "seed": "mysql source ./db/seeds.sql"
   },
   "repository": {
     "type": "git",
