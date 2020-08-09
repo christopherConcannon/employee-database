@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 const cTable = require('console.table');
 const logo = require('asciiart-logo');
-const config = require('./package.json');
+// const config = require('./package.json');
 
 const Query = require('./lib/Query');
 
@@ -83,7 +83,7 @@ const promptActions = () => {
           
 				case 'Quit':
 					console.log('');
-					console.log(logo({ name: 'Goodbye!' }).render());
+					console.log(logo({ name: 'Goodbye!', logoColor: 'cyan', borderColor: 'yellow' }).render());
           query.quit();
           break;
         default: 
@@ -110,7 +110,8 @@ const promptAddDepartment = () => {
 				// 	promptActions();
         // })
         .then(() => {
-          console.log('\nNew employee added\n');
+          // console.log('\nNew department added!\n');
+          console.log(logo({ name: '\nNew department added!\n', logoColor: 'bold-green', borderColor: 'bold-green' }).render());
           promptActions();
         })
 				.catch(console.log);
@@ -147,7 +148,8 @@ const promptAddRole = () => {
 					// 	promptActions();
           // })
           .then(() => {
-            console.log('\nNew employee added\n');
+            // console.log('\nNew role added!\n');
+            console.log(logo({ name: '\nNew role added!\n', logoColor: 'bold-green', borderColor: 'bold-green' }).render());
             promptActions();
           })
 					.catch(console.log);
@@ -193,7 +195,8 @@ const promptAddEmployee = () => {
 						// })
 						// .then(promptActions())
 						.then(() => {
-							console.log('\nNew employee added\n');
+              // console.log('\nNew employee added!\n');
+              console.log(logo({ name: '\nNew employee added!\n', logoColor: 'bold-green', borderColor: 'bold-green' }).render());
 							promptActions();
 						})
 						.catch(console.log);
@@ -225,7 +228,8 @@ const promptUpdateEmp = () => {
 					query
 						.updateEmployeeRole(updateRoleObj)
 						.then(() => {
-							console.log('\nEmployee role updated!\n');
+              // console.log('\nEmployee role updated!\n');
+              console.log(logo({ name: '\nEmployee role updated!\n', logoColor: 'bold-green', borderColor: 'bold-green' }).render());
 							promptActions();
 						})
 						.catch(console.log);
@@ -234,5 +238,6 @@ const promptUpdateEmp = () => {
 	});
 };
 
-console.log(logo(config).render());
+// console.log(logo(config).render());
+console.log(logo({ name: 'Welcome to Employee Database!', logoColor: 'cyan', borderColor: 'yellow' }).render());
 promptActions();
