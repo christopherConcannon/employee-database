@@ -107,8 +107,4 @@ dist
 config/
 .env
 
-Query-promises-working-pre-array-methods.js
-Query-roles-not-working.js
-Query-roles-working-janky.js
-app-pre-janky.js
 
