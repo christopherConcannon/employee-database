@@ -25,6 +25,7 @@ Make sure you have MySQL installed on your machine. For Windows, get it [here](h
 
 ## Usage
 To use application with sample data, run <$ npm start> then provide responses to prompts to interact with the database how you wish.  To reset or empty the database, you will need to open the MySQL CLI by running <$ mysql -u root -p> and providing your MySQL password.  Then at the mysql prompt, enter <mysql use employee_tracker_db;>.  At this point you can run queries directly on the database.  If you would like to empty the database completely run <mysql source ./db/schema.sql>.  This will create the tables but they will have no data so you can enter your own.  If you would like to reset the database with seed data, run <mysql source ./db/seeds.sql> directly after the previous <schema.sql> command.  To leave the MySQL CLI, type <mysql quit;> and you will return to your terminal prompt.
+To see an example of the application in use visit [here](https://drive.google.com/file/d/1IP-UqG3k2mjywhdTtKAODVVYG2ul6H9X/view).
 
 ## License 
 This project is covered under the MIT license 
