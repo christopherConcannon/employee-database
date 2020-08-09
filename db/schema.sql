@@ -2,9 +2,9 @@ DROP DATABASE IF EXISTS employee_tracker_db;
 CREATE DATABASE employee_tracker_db;
 USE employee_tracker_db;
 
-DROP TABLE IF EXISTS employees;
 DROP TABLE IF EXISTS departments;
 DROP TABLE IF EXISTS roles;
+DROP TABLE IF EXISTS employees;
 
 
 CREATE TABLE departments (
@@ -16,7 +16,7 @@ CREATE TABLE departments (
 CREATE TABLE roles (
   id INT AUTO_INCREMENT,
   title VARCHAR(30),
-  salary DECIMAL,
+  salary DECIMAL(9, 2),
   department_id INT,
   PRIMARY KEY (id),
   -- TODO...define cascade effects?
