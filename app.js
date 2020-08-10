@@ -7,6 +7,7 @@ const Query = require('./lib/Query');
 
 const query = new Query();
 
+// Menu options on load
 const promptActions = () => {
 	inquirer
 		.prompt([
@@ -59,35 +60,42 @@ const promptActions = () => {
 							promptActions();
 						})
 						.catch(console.log);
-          break;
-          
+					break;
+
 				case 'Add a department':
 					console.log('');
 					promptAddDepartment();
-          break;
-          
+					break;
+
 				case 'Add a role':
 					console.log('');
 					promptAddRole();
-          break;
-          
+					break;
+
 				case 'Add an employee':
 					console.log('');
 					promptAddEmployee();
-          break;
-          
+					break;
+
 				case 'Update an employee role':
 					console.log('');
 					promptUpdateEmp();
-          break;
-          
+					break;
+
 				case 'Quit':
 					console.log('');
-					console.log(logo({ name: 'Goodbye!', logoColor: 'cyan', borderColor: 'yellow' }).render());
-          query.quit();
-          break;
-        default: 
-          break;
+					console.log(
+						logo({
+							name: 'Goodbye!',
+							logoColor: 'cyan',
+							borderColor: 'yellow'
+						}).render()
+					);
+					query.quit();
+					break;
+				default:
+          console.log('Error');
+					break;
 			}
 		});
 };
@@ -104,21 +112,22 @@ const promptAddDepartment = () => {
 		.then(({ department }) => {
 			query
 				.addDepartment(department)
-				// .then(query.viewDept)
-				// .then(([ row ]) => {
-				// 	console.table(row);
-				// 	promptActions();
-        // })
-        .then(() => {
-          // console.log('\nNew department added!\n');
-          console.log(logo({ name: '\nNew department added!\n', logoColor: 'bold-green', borderColor: 'bold-green' }).render());
-          promptActions();
-        })
+				.then(() => {
+					console.log(
+						logo({
+							name: '\nNew department added!\n',
+							logoColor: 'bold-green',
+							borderColor: 'bold-green'
+						}).render()
+					);
+					promptActions();
+				})
 				.catch(console.log);
 		});
 };
 
 const promptAddRole = () => {
+  // generate department choices dynamically from db
 	query.deptsArray().then((deptChoices) => {
 		inquirer
 			.prompt([
@@ -142,22 +151,23 @@ const promptAddRole = () => {
 			.then((roleObj) => {
 				query
 					.addRole(roleObj)
-					// .then(query.viewRoles)
-					// .then(([ row ]) => {
-					// 	console.table(row);
-					// 	promptActions();
-          // })
-          .then(() => {
-            // console.log('\nNew role added!\n');
-            console.log(logo({ name: '\nNew role added!\n', logoColor: 'bold-green', borderColor: 'bold-green' }).render());
-            promptActions();
-          })
+					.then(() => {
+						console.log(
+							logo({
+								name: '\nNew role added!\n',
+								logoColor: 'bold-green',
+								borderColor: 'bold-green'
+							}).render()
+						);
+						promptActions();
+					})
 					.catch(console.log);
 			});
 	});
 };
 
 const promptAddEmployee = () => {
+  // generate role and manager choices dynamically from db
 	query.rolesArray().then((roleChoices) => {
 		query.employeesArray().then((employeeChoices) => {
 			inquirer
@@ -174,7 +184,7 @@ const promptAddEmployee = () => {
 					},
 					{
 						type    : 'list',
-						name    : 'role',
+						name    : 'title',
 						message : "Select the employee's role",
 						choices : roleChoices
 					},
@@ -188,15 +198,14 @@ const promptAddEmployee = () => {
 				.then((addEmpObj) => {
 					query
 						.addEmployee(addEmpObj)
-						// .then(query.viewEmployees)
-						// .then(([ row ]) => {
-						//   console.table(row);
-						//   promptActions();
-						// })
-						// .then(promptActions())
 						.then(() => {
-              // console.log('\nNew employee added!\n');
-              console.log(logo({ name: '\nNew employee added!\n', logoColor: 'bold-green', borderColor: 'bold-green' }).render());
+							console.log(
+								logo({
+									name: '\nNew employee added!\n',
+									logoColor: 'bold-green',
+									borderColor: 'bold-green'
+								}).render()
+							);
 							promptActions();
 						})
 						.catch(console.log);
@@ -206,7 +215,7 @@ const promptAddEmployee = () => {
 };
 
 const promptUpdateEmp = () => {
-	// TODO...populate choices dynamically from db with helper query function
+  // generate employee and role choices dynamically from db
 	query.employeesArray().then((employeeChoices) => {
 		query.rolesArray().then((roleChoices) => {
 			inquirer
@@ -228,8 +237,13 @@ const promptUpdateEmp = () => {
 					query
 						.updateEmployeeRole(updateRoleObj)
 						.then(() => {
-              // console.log('\nEmployee role updated!\n');
-              console.log(logo({ name: '\nEmployee role updated!\n', logoColor: 'bold-green', borderColor: 'bold-green' }).render());
+							console.log(
+								logo({
+									name: '\nEmployee role updated!\n',
+									logoColor: 'bold-green',
+									borderColor: 'bold-green'
+								}).render()
+							);
 							promptActions();
 						})
 						.catch(console.log);
@@ -239,5 +253,11 @@ const promptUpdateEmp = () => {
 };
 
 // console.log(logo(config).render());
-console.log(logo({ name: 'Welcome to Employee Database!', logoColor: 'cyan', borderColor: 'yellow' }).render());
+console.log(
+	logo({
+		name: 'Welcome to Employee Database!',
+		logoColor: 'cyan',
+		borderColor: 'yellow'
+	}).render()
+);
 promptActions();
